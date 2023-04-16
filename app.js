@@ -31,6 +31,11 @@ app.use(express.json());
 //     next();
 // });
 app.use(cors());
+app.get("/", (req, res) => {
+  res.json({
+    msg: "Working Backend..."
+  })
+})
 app.get("/api/readposts", (req, res, next) => {
   Post.find().then((documents) => {
     res.status(200).json({
