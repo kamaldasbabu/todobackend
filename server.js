@@ -1,6 +1,6 @@
 const { debug } = require('console');
 const http=require('http');
-const app = require('./app')
+const app = require('./index')
 const port = process.env.PORT || 3000;
 
 const normalizePort = val => {
