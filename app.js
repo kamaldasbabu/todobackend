@@ -64,5 +64,7 @@ app.delete("/api/deletepost/:id", (req, res, next) => {
       res.status(500).send(err);
     });
 });
-
+app.listen(3000, () => {
+  console.log("Running on port 3000.");
+});
 module.exports = app;
