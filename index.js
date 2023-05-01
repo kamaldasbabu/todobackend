@@ -36,6 +36,13 @@ app.get("/", (req, res) => {
     msg: "Working Backend..."
   })
 })
+
+app.get("/ping", (req, res) => {
+  res.json({
+    msg: "Working Backend... PING SUCCESS !!!"
+  })
+})
+
 app.get("/api/readposts", (req, res, next) => {
   Post.find().then((documents) => {
     res.status(200).json({
