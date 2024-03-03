@@ -4,7 +4,8 @@
   "description": "todo backend for testing",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "nodemon server.js",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,9 @@
   "homepage": "https://github.com/kamaldasbabu/todobackend#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.18.2",
+    "mongodb": "^6.3.0",
     "mongoose": "^7.0.3"
   },
   "devDependencies": {
