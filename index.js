@@ -50,14 +50,14 @@ app.get("/ping", (req, res) => {
   })
 })
 
-app.get("/api/readposts", (req, res, next) => {
-  Post.find().then((documents) => {
-    res.status(200).json({
-      message: "Successfully",
-      posts: documents,
-    });
-  });
-});
+// app.get("/api/readposts", (req, res, next) => {
+//   Post.find().then((documents) => {
+//     res.status(200).json({
+//       message: "Successfully",
+//       posts: documents,
+//     });
+//   });
+// });
 // app.post("/api/createpost", (req, res, next) => {
 //   const newPost = new Post({
 //     title: req.body.title,
