@@ -3,7 +3,7 @@ const express = require("express");
 var cors = require("cors");
 const Post = require("./model/postSchema.js");
 const mongoose = require("mongoose");
-const profileRouter = require("./router/profile.route.js").default
+const profileRouter = require("./router/profile.route.js")
 // const url = "mongodb+srv://todolistkamal:SYvJFLnhLahK8YBw@cluster0.nlafqnt.mongodb.net/db2?retryWrites=true&w=majority"
 // // mongoose.connect(url, {userNewUrlParser: true}).then(()=> {
 // mongoose
@@ -35,8 +35,8 @@ app.use(cors());
 const version = process.env.VERSION || "v1";
 
 app.use("/api/v1/profile", profileRouter);
-app.use("/api/v1/products", profileRouter);
-app.use("/api/v1/projects", profileRouter);
+// app.use("/api/v1/products", profileRouter);
+// app.use("/api/v1/projects", profileRouter);
 
 app.get("/", (req, res) => {
   res.json({
@@ -50,14 +50,14 @@ app.get("/ping", (req, res) => {
   })
 })
 
-// app.get("/api/readposts", (req, res, next) => {
-//   Post.find().then((documents) => {
-//     res.status(200).json({
-//       message: "Successfully",
-//       posts: documents,
-//     });
-//   });
-// });
+app.get("/api/readposts", (req, res, next) => {
+  Post.find().then((documents) => {
+    res.status(200).json({
+      message: "Successfully",
+      posts: documents,
+    });
+  });
+});
 // app.post("/api/createpost", (req, res, next) => {
 //   const newPost = new Post({
 //     title: req.body.title,
