@@ -8,6 +8,7 @@ const getUser = async (req, res) => {
   const result = await client.collection(POSTS_COLLECTON).find({}).toArray();
   console.log("result2", result, new Date().getTime());
   console.log("result3", result, new Date().getTime());
+  console.log("result3", result, new Date().getTime());
 
   sendResponse(res, true, 200, "Messgage", result);
 };
