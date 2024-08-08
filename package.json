@@ -6,7 +6,8 @@
   "scripts": {
     "test": "nodemon server.js",
     "dev": "nodemon index.js",
-    "prod": "node server.js"
+    "prod": "node server.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
