@@ -4,7 +4,7 @@ require('dotenv').config();
 
 function dbService() {
     let client = null;
-    const url = process.env.DB_URI || "mongodb://0.0.0.0:27017";
+    const url = process.env.MONGO_URI || "mongodb://0.0.0.0:27017";
     async function getClient() {
         if (client)
             return client.db(DB_NAME);
@@ -22,7 +22,7 @@ function dbService() {
 
         return client.db(DB_NAME);
     }
-    
+
     console.log("DB Connectcd");
 
     return { getClient };

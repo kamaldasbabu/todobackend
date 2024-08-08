@@ -46,6 +46,7 @@ switch (error.code){
  // create server and serve it or listen
  const server = http.createServer(app);
  server.on("error: ", onError);
- server.on("listening: ", onListening);
+ server.on("listining", onListening);
+//  server.on("listening", onListening);
  console.log("server started", port)
 // server.listen(port);
