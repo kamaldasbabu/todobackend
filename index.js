@@ -33,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 // });
 app.use(cors("*"));
 const version = process.env.VERSION || "v1";
+const port = process.env.PORT || 3000;
 
 app.use("/api/v1/profile", profileRouter);
 // app.use("/api/v1/products", profileRouter);
@@ -78,8 +79,10 @@ app.get("/ping", (req, res) => {
 //       res.status(500).send(err);
 //     });
 // });
-app.listen(3000, () => {
-  console.log("Running on port 3000.");
+app.listen(port, () => {
+  console.log("Running on port : "+port);
 });
+
+
 module.exports = app;
 
