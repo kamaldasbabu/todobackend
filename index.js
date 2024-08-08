@@ -31,7 +31,7 @@ app.use(express.json());
 //     );
 //     next();
 // });
-app.use(cors());
+app.use(cors("*"));
 const version = process.env.VERSION || "v1";
 
 app.use("/api/v1/profile", profileRouter);
