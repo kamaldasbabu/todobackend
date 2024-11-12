@@ -16,7 +16,6 @@ const profileRouter = require("./router/profile.route.js")
 //   });
 const app = express();
 app.use(express.json());
-const port = process.env.PORT || 3000;
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use((req, res, next)=> {
@@ -32,8 +31,9 @@ const port = process.env.PORT || 3000;
 //     );
 //     next();
 // });
-app.use(cors());
+app.use(cors("*"));
 const version = process.env.VERSION || "v1";
+const port = process.env.PORT || 3000;
 
 app.use("/api/v1/profile", profileRouter);
 // app.use("/api/v1/products", profileRouter);
@@ -82,5 +82,7 @@ app.get("/ping", (req, res) => {
 app.listen(port, () => {
   console.log("Server is running on :  "+port);
 });
+
+
 module.exports = app;
 
