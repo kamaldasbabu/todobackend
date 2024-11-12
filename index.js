@@ -2,7 +2,7 @@
 const express = require("express");
 var cors = require("cors");
 const Post = require("./model/postSchema.js");
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 const profileRouter = require("./router/profile.route.js")
 // const url = "mongodb+srv://todolistkamal:SYvJFLnhLahK8YBw@cluster0.nlafqnt.mongodb.net/db2?retryWrites=true&w=majority"
 // // mongoose.connect(url, {userNewUrlParser: true}).then(()=> {
@@ -16,6 +16,7 @@ const profileRouter = require("./router/profile.route.js")
 //   });
 const app = express();
 app.use(express.json());
+const port = process.env.PORT || 3000;
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use((req, res, next)=> {
@@ -78,8 +79,8 @@ app.get("/ping", (req, res) => {
 //       res.status(500).send(err);
 //     });
 // });
-app.listen(3000, () => {
-  console.log("Running on port 3000.");
+app.listen(port, () => {
+  console.log("Server is running on :  "+port);
 });
 module.exports = app;
 
