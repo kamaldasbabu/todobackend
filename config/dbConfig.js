@@ -23,8 +23,6 @@ function dbService() {
         return client.db(DB_NAME);
     }
 
-    console.log("DB Connectcd");
-
     return { getClient };
 }
 

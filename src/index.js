@@ -1,9 +1,9 @@
 // const bodyParser = require("body-parser");
 const express = require("express");
 var cors = require("cors");
-const Post = require("./model/postSchema.js");
+// const Post = require("../model/postSchema.js");
 // const mongoose = require("mongoose");
-const profileRouter = require("./router/profile.route.js")
+const profileRouter = require("../router/profile.route.js")
 // const url = "mongodb+srv://todolistkamal:SYvJFLnhLahK8YBw@cluster0.nlafqnt.mongodb.net/db2?retryWrites=true&w=majority"
 // // mongoose.connect(url, {userNewUrlParser: true}).then(()=> {
 // mongoose
