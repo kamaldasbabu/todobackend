@@ -5,8 +5,8 @@
   "module": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:prod": "ts-node  server.ts",
-    "start:dev": "nodemon server.ts"
+    "start:prod": "ts-node -r dotenv/config server.ts",
+    "start:dev": "nodemon -r dotenv/config  server.ts"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,7 @@
     "csv-parser": "^3.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "express-rate-limit": "^7.5.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.7.1",
     "multer": "^1.4.5-lts.1",
