@@ -1,0 +1,6 @@
+{
+    "OK": "Ok",
+    "USER_LOGIN_SUCCESSFUL": "User login successfull.",
+    "DATA_FETCH_SUCCESSFULL":"Successfully fetched users.",
+    "MANDATORY_PARAMETER_MISSING": "Mandatory parameter missing."
+}

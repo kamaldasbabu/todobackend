@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 import { sendResponse } from '../../utils/utils';
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
 // Load environment variables from .env file
-dotenv.config();
+// dotenv.config();
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const token = req.header('Authorization')?.split(' ')[1];

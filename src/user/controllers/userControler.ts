@@ -4,10 +4,12 @@ import { UserModel } from '../models/userModels';
 import { createUser, findAndUpdate } from '../services/userService';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import dotenv from 'dotenv';
+import Message from '../../utils/messages.json';
+
+// import dotenv from 'dotenv';
 
 // Load environment variables from .env file
-dotenv.config();
+// dotenv.config();
 
 
 // User login controller
@@ -16,9 +18,9 @@ const userLogin = async (req: Request, res: Response) => {
   
     try {
       const user = await UserModel.findOne({ email });
-      if (!user) return sendResponse(res, false, 400, "Invalid Email.", null);
+      if (!user) return sendResponse(res, false, 400, Message.MANDATORY_PARAMETER_MISSING, "Invalid Email.");
   
-      const isMatch = await bcrypt.compare(password, user.password);
+      const isMatch: boolean = await bcrypt.compare(password, user.password);
       if (!isMatch) return sendResponse(res, false, 400, "Invalid Password.", null);
 
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: '1h' });
@@ -31,11 +33,12 @@ const userLogin = async (req: Request, res: Response) => {
 const allUsers = async (req: Request, res: Response) => {
 
     let user = await UserModel.find({});
-    sendResponse(res, true, 200, "Successfully fetched users", user);
+    sendResponse(res, true, 200, Message.DATA_FETCH_SUCCESSFULL, user);
 }
 
 const newUser = async (req: Request, res: Response) => {
-    const {name, email, password, age, sex} = req.body;
+    const payload = req.body;
+    const {name, email, password, age, sex}  = payload.data;
     console.log("name, email, password, age, sex",  name, email, password, age, sex);
     
     try {
@@ -70,17 +73,18 @@ const newUser = async (req: Request, res: Response) => {
 
 }
 const updateUser = async (req: Request, res: Response) => {
-  const {email, name, age, sex } = req.body;
+ 
+  const payload = req.body;
+    const {name, email,  age, sex, id}  = payload.data;
     try {
 
        // console.log("req.body)req.body)", req.body);
         
-        const {id} = req.body.user;
+        // const {id} = req.body.user;
         let updateData;
         //const updateData = req.file ? {email, name, age, sex, profilePicture : req.file.path}req.file.path : "";
         
-        
-        
+    
         if(req.file) {
           updateData = {email, name, age, sex, profilePicture : req.file.path};
         } else {
