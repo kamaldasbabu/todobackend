@@ -5,8 +5,8 @@
   "module": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:prod": "ts-node -r dotenv/config server.ts",
-    "start:dev": "nodemon -r dotenv/config  server.ts"
+    "start:prod": "ts-node -r dotenv/config server-2.ts",
+    "start:dev": "nodemon -r dotenv/config  server-2.ts"
   },
   "keywords": [],
   "author": "",
