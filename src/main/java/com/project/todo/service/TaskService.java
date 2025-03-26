@@ -23,4 +23,8 @@ public class TaskService {
     public TaskDTO getTask(String id) {
         return  taskManager.getTask(id);
     }
+
+    public TaskDTO updateTask( TaskDTO taskDTO, String id) {
+        return  taskManager.updateTask(taskDTO, id);
+    }
 }

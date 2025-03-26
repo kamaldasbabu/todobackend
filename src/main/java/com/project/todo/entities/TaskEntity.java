@@ -19,4 +19,5 @@ public class TaskEntity {
     private String startTime;
     private String completedTime;
     private String status;
+    private String isActive;
 }

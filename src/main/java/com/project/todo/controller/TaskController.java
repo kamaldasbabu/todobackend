@@ -11,30 +11,40 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/todo/task")
+@RequestMapping("/api/todo")
 public class TaskController {
 
     @Autowired
     private TaskService taskService;
 
-    @GetMapping
+    @GetMapping(value = "/task")
     public ResponseEntity<List<TaskDTO>> getTaskList() {
         log.info("get api running");
         return ResponseEntity.status(HttpStatus.OK).body(taskService.getTasks());
     }
 
-    @PostMapping
+    @PostMapping(value = "/task")
     public ResponseEntity<TaskDTO> saveTask(@RequestBody TaskDTO taskDto) {
         return  ResponseEntity.status(HttpStatus.OK).body(taskService.saveTask(taskDto));
     }
-    @GetMapping
-    public ResponseEntity<TaskDTO> getTask(@RequestParam String id) {
+    @GetMapping(value = "/task/{id}")
+    public ResponseEntity<TaskDTO> getTask(@PathVariable(name ="id") String id) {
         TaskDTO taskDTO = taskService.getTask(id);
         return ResponseEntity.status(HttpStatus.OK).body(taskDTO);
     }
 
-    @PutMapping
-    public ResponseEntity<TaskDTO> updateTask(@RequestBody TaskDTO taskDto, @RequestParam String id) {
-        return  ResponseEntity.status(HttpStatus.OK).body(taskService.saveTask(taskDto));
+    @GetMapping(value = "/task1")
+    public ResponseEntity<TaskDTO> getTask2(@RequestParam String id) {
+        log.info("id = {}", id);
+        TaskDTO taskDTO = taskService.getTask(id);
+        return ResponseEntity.status(HttpStatus.OK).body(taskDTO);
     }
+
+    @PutMapping(value = "/task/{id}")
+    public ResponseEntity<TaskDTO> updateTask(@RequestBody TaskDTO taskDto, @PathVariable(value = "id") String id) {
+
+        TaskDTO taskDTOUpdate = taskService.updateTask(taskDto, id);
+        return  ResponseEntity.status(HttpStatus.OK).body(taskDTOUpdate);
+    }
+
 }
