@@ -24,7 +24,7 @@ public class TaskUserManager {
     private TaskUserRepository taskUserRepository;
 
     @Autowired
-    private  TaskRepository taskRepository;
+    private TaskRepository taskRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -38,6 +38,7 @@ public class TaskUserManager {
         List<TaskEntity> taskEntityList = taskRepository
                 .findAllById(taskUserEntityList.stream().map(TaskUserEntity::getTaskId).toList());
 
+        assert userEntity != null;
         return TaskUserViewDTO.builder()
                 .id(userId)
                 .name(userEntity.getName())
@@ -61,10 +62,28 @@ public class TaskUserManager {
                 .status(taskUserDTO.getStatus())
                 .isActive("T")
                 .build();
-log.info("taskUserEntity {}", taskUserEntity);
-            taskUserRepository.save(taskUserEntity);
-        return  taskUserDTO;
+        log.info("taskUserEntity {}", taskUserEntity);
+        taskUserRepository.save(taskUserEntity);
+        return taskUserDTO;
     }
+
+    public TaskUserDTO reAssignTaskToUser(TaskUserDTO taskUserDTO) {
+
+        TaskUserEntity taskUserEntityResponse = taskUserRepository.findById(taskUserDTO.getTaskId()).orElse(null);
+
+        TaskUserEntity taskUserEntity = TaskUserEntity.builder()
+                .id(taskUserDTO.getTaskId())
+                .userId(taskUserEntityResponse.getUserId())
+                .date(taskUserEntityResponse.getDate())
+                .priority(taskUserEntityResponse.getPriority())
+                .status(taskUserDTO.getStatus())
+                .isActive("T")
+                .build();
+        log.info("taskUserEntity {}", taskUserEntity);
+        taskUserRepository.save(taskUserEntity);
+        return taskUserDTO;
+    }
+
 
 }
 

@@ -1,4 +1,5 @@
 package com.project.todo.service;
+
 import com.project.todo.dto.TaskUserDTO;
 import com.project.todo.dto.TaskUserViewDTO;
 import com.project.todo.managers.TaskUserManager;
@@ -15,8 +16,13 @@ public class TaskUserService {
     public TaskUserViewDTO getTaskByUser(String userId) {
         return taskUserManager.getTaskUsers(userId);
     }
+
     public TaskUserDTO assignTaskToUser(TaskUserDTO taskUserDTO) {
         return taskUserManager.assignTaskToUser(taskUserDTO);
+    }
+
+    public TaskUserDTO reAssignTaskToUser(TaskUserDTO taskUserDTO) {
+        return taskUserManager.reAssignTaskToUser(taskUserDTO);
     }
 
 }

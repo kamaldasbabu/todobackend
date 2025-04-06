@@ -17,6 +17,7 @@ public class TaskUserController {
 
     @Autowired
     private TaskUserService taskUserService;
+
     @GetMapping(value = "/task-user/{userId}")
     public TaskUserViewDTO getTaskUser(@PathVariable(value = "userId") String userId) {
         log.info("userId {}", userId);
@@ -27,6 +28,18 @@ public class TaskUserController {
 
     public ResponseEntity<TaskUserDTO> assignTaskToUser(@RequestBody TaskUserDTO taskUserDTO) {
         TaskUserDTO td = taskUserService.assignTaskToUser(taskUserDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(td);
+    }
+
+    @PutMapping(value = "/task-user/re-assign")
+    public ResponseEntity<TaskUserDTO> reAssignTaskToUser(@RequestBody TaskUserDTO taskUserDTO) {
+        TaskUserDTO td = taskUserService.reAssignTaskToUser(taskUserDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(td);
+    }
+
+    @PutMapping(value = "/task-user/completed")
+    public ResponseEntity<TaskUserDTO> completedTaskToUser(@RequestBody TaskUserDTO taskUserDTO) {
+        TaskUserDTO td = taskUserService.reAssignTaskToUser(taskUserDTO);
         return ResponseEntity.status(HttpStatus.OK).body(td);
     }
 
